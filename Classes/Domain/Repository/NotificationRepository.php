@@ -81,6 +81,7 @@ class NotificationRepository extends Repository
     {
 
         $query = $this->createQuery();
+        $query->getQuerySettings()->setIgnoreEnableFields(false);
         $query->setOrderings($ordering);
         return $query->execute();
         // $queryParser = $this->objectManager->get(\TYPO3\CMS\Extbase\Persistence\Generic\Storage\Typo3DbQueryParser::class);
@@ -152,6 +153,7 @@ class NotificationRepository extends Repository
         // Now get the notifications by the uids, which match to the user group(s)
         // We need to do this that way, because the return has to be an object of type QueryResultInterface, so that the pagination works.
         $query = $this->createQuery();
+        $query->getQuerySettings()->setIgnoreEnableFields(false);
 
         $result = $query
             ->matching(
